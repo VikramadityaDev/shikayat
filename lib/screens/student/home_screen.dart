@@ -9,7 +9,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: const Text(
-          "Minor project",
+          "Shikayat",
         ),
         elevation: 0,
         backgroundColor: Colors.white,
@@ -29,15 +29,15 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             ListTile(
-              leading: Icon(Icons.home),
-              title: Text('Home'),
+              leading: const Icon(Icons.home),
+              title: const Text('Home'),
               onTap: () {
                 Navigator.pop(context);
               },
             ),
             ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('Settings'),
+              leading: const Icon(Icons.settings),
+              title: const Text('Settings'),
               onTap: () {
                 Navigator.pop(context);
               },
@@ -60,7 +60,7 @@ class HomeScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: Colors.grey,
                       borderRadius: BorderRadius.circular(12)),
-                  child: Text("Add Complaint"),
+                  child: const Text("Add Complaint"),
                 ),
                 Container(
                   alignment: Alignment.center,
@@ -69,7 +69,7 @@ class HomeScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: Colors.grey,
                       borderRadius: BorderRadius.circular(12)),
-                  child: Text("View"),
+                  child: const Text("View"),
                 ),
                 Container(
                   alignment: Alignment.center,
@@ -78,7 +78,7 @@ class HomeScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: Colors.grey,
                       borderRadius: BorderRadius.circular(12)),
-                  child: Text("My Complaint"),
+                  child: const Text("My Complaint"),
                 ),
               ],
             ),
@@ -102,7 +102,7 @@ class HomeScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: Colors.grey,
                       borderRadius: BorderRadius.circular(12)),
-                  child: Text("Exam related"),
+                  child: const Text("Exam related"),
                 ),
                 Container(
                   alignment: Alignment.center,
@@ -111,7 +111,7 @@ class HomeScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: Colors.grey,
                       borderRadius: BorderRadius.circular(12)),
-                  child: Text("Facility related"),
+                  child: const Text("Facility related"),
                 )
               ],
             ),
@@ -128,7 +128,7 @@ class HomeScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: Colors.grey,
                       borderRadius: BorderRadius.circular(12)),
-                  child: Text("Doc. related"),
+                  child: const Text("Doc. related"),
                 ),
                 Container(
                   alignment: Alignment.center,
@@ -137,7 +137,7 @@ class HomeScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: Colors.grey,
                       borderRadius: BorderRadius.circular(12)),
-                  child: Text("Library related"),
+                  child: const Text("Library related"),
                 )
               ],
             ),
@@ -154,7 +154,7 @@ class HomeScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: Colors.grey,
                       borderRadius: BorderRadius.circular(12)),
-                  child: Text("Canteen related"),
+                  child: const Text("Canteen related"),
                 ),
                 Container(
                   alignment: Alignment.center,
@@ -163,7 +163,7 @@ class HomeScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: Colors.grey,
                       borderRadius: BorderRadius.circular(12)),
-                  child: Text("Lost & Found "),
+                  child: const Text("Lost & Found "),
                 )
               ],
             )
