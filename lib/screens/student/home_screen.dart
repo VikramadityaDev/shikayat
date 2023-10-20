@@ -128,7 +128,7 @@ class HomeScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: Colors.grey,
                       borderRadius: BorderRadius.circular(12)),
-                  child: const Text("Doc. related"),
+                  child: const Text("Document related"),
                 ),
                 Container(
                   alignment: Alignment.center,
