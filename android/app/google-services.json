@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "649650225376",
+    "project_id": "shikayat-b0180",
+    "storage_bucket": "shikayat-b0180.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:649650225376:android:a85795835fe45eb592d085",
+        "android_client_info": {
+          "package_name": "com.example.shikayat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAy6hadI-_fj8avKZD9tc8ZbvyFaQBe5zA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
