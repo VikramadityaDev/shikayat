@@ -12,6 +12,8 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
   firebase_core: ^2.19.0
+  google_fonts: ^6.1.0
+  lottie: ^2.7.0
 
 dev_dependencies:
   flutter_test:
@@ -23,4 +25,4 @@ flutter:
 
   assets:
     - assets/
-    - assets/add_message.png
+    - assets/icons/
