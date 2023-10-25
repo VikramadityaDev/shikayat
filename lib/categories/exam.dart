@@ -35,7 +35,9 @@ class Exam extends StatelessWidget {
                 height: 50,
               ),
               MaterialButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/examRelated');
+                },
                 color: const Color(0xFF000000),
                 elevation: 0,
                 shape: RoundedRectangleBorder(
