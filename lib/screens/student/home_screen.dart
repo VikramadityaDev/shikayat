@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
@@ -7,6 +8,7 @@ import 'package:shikayat/categories/exam.dart';
 import 'package:shikayat/categories/facility.dart';
 import 'package:shikayat/categories/library.dart';
 import 'package:shikayat/categories/lost&found.dart';
+import 'package:shikayat/screens/student/add_shikayat.dart';
 import 'package:shikayat/utils/assets.dart';
 
 class HomeScreen extends StatefulWidget with WidgetsBindingObserver {
@@ -245,10 +247,10 @@ class _HomeScreenState extends State<HomeScreen>
                 children: [
                   Image.asset(
                     'assets/shikayat_logo.png',
-                    height: 40,
+                    height: 38,
                   ),
                   const SizedBox(
-                    width: 16,
+                    width: 12,
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -264,12 +266,25 @@ class _HomeScreenState extends State<HomeScreen>
                       const SizedBox(
                         height: 4,
                       ),
-                      const Text(
-                        "An Complaint Management Application.",
-                        style: TextStyle(
-                            fontSize: 12, fontWeight: FontWeight.w400),
-                      )
+                      Text(
+                        "Complaint Management System.",
+                        style: GoogleFonts.lato(
+                            fontSize: 13, fontWeight: FontWeight.w400),
+                      ),
+
                     ],
+                  ),
+                  const SizedBox(
+                    width: 1,
+                  ),
+                  IconButton(
+                      onPressed: (){
+                        FirebaseAuth.instance.signOut().then((value) {
+                          Navigator.of(context).pushReplacementNamed('/');
+                        },
+                        );
+                      },
+                      icon: const Icon(Icons.logout)
                   )
                 ],
               ),
@@ -300,32 +315,38 @@ class _HomeScreenState extends State<HomeScreen>
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Container(
-                  width: 60,
-                  height: 60,
-                  margin: const EdgeInsets.only(bottom: 10),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(8),
-                      boxShadow: [
-                        BoxShadow(
-                          color: const Color(0xFF50CD6D).withOpacity(0.1),
-                          blurRadius: 10,
-                          offset: const Offset(0, 3),
-                        ),
-                      ]),
-                  child: const Padding(
-                    padding: EdgeInsets.all(12.0),
-                    child: Image(
-                        color: Colors.green,
-                        image: AssetImage('assets/add_message.png')),
+                GestureDetector(
+                  onTap: (){
+                    Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => const AddShikayat()));
+                  },
+                  child: Container(
+                    width: 60,
+                    height: 60,
+                    margin: const EdgeInsets.only(bottom: 10),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(8),
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color(0xFF50CD6D).withOpacity(0.1),
+                            blurRadius: 10,
+                            offset: const Offset(0, 3),
+                          ),
+                        ]),
+                    child: const Padding(
+                      padding: EdgeInsets.all(12.0),
+                      child: Image(
+                          color: Colors.green,
+                          image: AssetImage('assets/add_message.png')),
+                    ),
                   ),
                 ),
-                const Text(
+                Text(
                   'Add Complaint',
                   maxLines: 2,
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
+                  style: GoogleFonts.lato(fontSize: 13, fontWeight: FontWeight.w500),
                 )
               ],
             ),
@@ -341,40 +362,43 @@ class _HomeScreenState extends State<HomeScreen>
               curve: Curves.easeOut,
             ),
           ),
-          child: SizedBox(
-            width: 60,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  width: 60,
-                  height: 60,
-                  margin: const EdgeInsets.only(bottom: 10),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(8),
-                      boxShadow: [
-                        BoxShadow(
-                          color: const Color(0xFF50CD6D).withOpacity(0.1),
-                          blurRadius: 10,
-                          offset: const Offset(0, 3),
-                        ),
-                      ],),
-                  child: const Padding(
-                    padding: EdgeInsets.all(15.0),
-                    child: Image(
-                        color: Colors.green,
-                        image: AssetImage('assets/view.png'),),
+          child: GestureDetector(
+            onTap: () => Navigator.of(context).pushNamed('/viewShikayat'),
+            child: SizedBox(
+              width: 60,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 60,
+                    height: 60,
+                    margin: const EdgeInsets.only(bottom: 10),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(8),
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color(0xFF50CD6D).withOpacity(0.1),
+                            blurRadius: 10,
+                            offset: const Offset(0, 3),
+                          ),
+                        ],),
+                    child: const Padding(
+                      padding: EdgeInsets.all(15.0),
+                      child: Image(
+                          color: Colors.green,
+                          image: AssetImage('assets/view.png'),),
+                    ),
                   ),
-                ),
-                const Text(
-                  'View Complaint',
-                  maxLines: 2,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
-                )
-              ],
+                  Text(
+                    'View Complaint',
+                    maxLines: 2,
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.lato(fontSize: 13, fontWeight: FontWeight.w500),
+                  )
+                ],
+              ),
             ),
           ),
         ),
@@ -388,40 +412,43 @@ class _HomeScreenState extends State<HomeScreen>
               curve: Curves.easeOut,
             ),
           ),
-          child: SizedBox(
-            width: 60,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  width: 60,
-                  height: 60,
-                  margin: const EdgeInsets.only(bottom: 10),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(8),
-                      boxShadow: [
-                        BoxShadow(
-                          color: const Color(0xFF50CD6D).withOpacity(0.1),
-                          blurRadius: 10,
-                          offset: const Offset(0, 3),
-                        ),
-                      ]),
-                  child: const Padding(
-                    padding: EdgeInsets.all(15.0),
-                    child: Image(
-                        color: Colors.green,
-                        image: AssetImage('assets/account.png')),
+          child: GestureDetector(
+            onTap: () => Navigator.of(context).pushNamed('/myShikayat'),
+            child: SizedBox(
+              width: 60,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 60,
+                    height: 60,
+                    margin: const EdgeInsets.only(bottom: 10),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(8),
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color(0xFF50CD6D).withOpacity(0.1),
+                            blurRadius: 10,
+                            offset: const Offset(0, 3),
+                          ),
+                        ]),
+                    child: const Padding(
+                      padding: EdgeInsets.all(15.0),
+                      child: Image(
+                          color: Colors.green,
+                          image: AssetImage('assets/account.png')),
+                    ),
                   ),
-                ),
-                const Text(
-                  'My Complaint',
-                  maxLines: 2,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
-                )
-              ],
+                  Text(
+                    'My Complaint',
+                    maxLines: 2,
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.lato(fontSize: 13, fontWeight: FontWeight.w500),
+                  )
+                ],
+              ),
             ),
           ),
         ),
