@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -17,7 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailTextController = TextEditingController();
   bool value = false;
   bool hide = false;
-  bool showspinner = false;
+  bool showSpinner = false;
   CollectionReference userId= FirebaseFirestore.instance.collection('userId');
 
   @override
@@ -45,7 +46,10 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         ),
         body: ModalProgressHUD(
-          inAsyncCall: showspinner,
+          progressIndicator: const CircularProgressIndicator(
+            color:  Color(0xFF10B600),
+          ),
+          inAsyncCall: showSpinner,
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -160,12 +164,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       _emailTextController.text.isEmpty&&_passwordTextController.text.isEmpty
                       ){
                         setState(() {
-                          showspinner=false;
+                          showSpinner=false;
                         });
                       }
                       else{
                         setState(() {
-                          showspinner=true;
+                          showSpinner=true;
                         });
                       }
                       FirebaseAuth.instance
@@ -187,7 +191,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         );
                         ScaffoldMessenger.of(context).showSnackBar(snackbar);
                         setState(() {
-                          showspinner=false;
+                          showSpinner=false;
                         });
                       }).onError((error, stackTrace){
                         print("Error ${error.toString()}");
@@ -204,7 +208,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         );
                         ScaffoldMessenger.of(context).showSnackBar(snackbar);
                         setState(() {
-                          showspinner=false;
+                          showSpinner=false;
                         });
                       });
                     },
