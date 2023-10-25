@@ -244,9 +244,9 @@ class ViewUserShikayatState extends State<ViewUserShikayat> {
                                           ),
                                         ),
                                       ),
-                                    )
+                                    ),
                                   ],
-                                )
+                                ),
                               ],
                             ),
                           ),
