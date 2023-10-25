@@ -64,7 +64,7 @@ class FacilityShikayatState extends State<FacilityShikayat> {
                 height: 120,
                 decoration: const BoxDecoration(
                   borderRadius:
-                      BorderRadius.only(bottomRight: Radius.circular(50)),
+                      BorderRadius.only(bottomRight: Radius.circular(50),),
                   color: Color(0xFF10B600),
                 ),
                 child: Stack(
