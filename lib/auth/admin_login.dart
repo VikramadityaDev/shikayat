@@ -40,6 +40,9 @@ class _AdminLoginState extends State<AdminLogin> {
           ),
         ),
         body: ModalProgressHUD(
+          progressIndicator: const CircularProgressIndicator(
+            color:  Color(0xFF10B600),
+          ),
           inAsyncCall: showSpinner,
           child: SingleChildScrollView(
             child: Column(
