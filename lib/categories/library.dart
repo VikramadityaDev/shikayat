@@ -37,7 +37,9 @@ class Library extends StatelessWidget {
                 height: 50,
               ),
               MaterialButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/libraryRelated');
+                },
                 color: const Color(0xFF000000),
                 elevation: 0,
                 shape: RoundedRectangleBorder(
