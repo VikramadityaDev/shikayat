@@ -35,7 +35,9 @@ class Facility extends StatelessWidget {
                 height: 50,
               ),
               MaterialButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/facilityRelated');
+                },
                 color: const Color(0xFF000000),
                 elevation: 0,
                 shape: RoundedRectangleBorder(
