@@ -178,6 +178,37 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     FirebaseAuth.instance
                         .sendPasswordResetEmail(email: emailController.text)
                         .then((value) => Navigator.of(context).pop());
+                    if(emailController.text.isEmpty){
+                      final snackbar = SnackBar(
+                        content:
+                        const Text("Please enter a valid Email address."),
+                        elevation: 20,
+                        backgroundColor: const Color(0xFFED0324),
+                        behavior: SnackBarBehavior.floating,
+                        action: SnackBarAction(
+                          textColor: Colors.white,
+                          label: '',
+                          onPressed: () {},
+                        ),
+                      );
+                      ScaffoldMessenger.of(context)
+                          .showSnackBar(snackbar);
+                    } if(emailController.text.isNotEmpty){
+                      final snackbar = SnackBar(
+                        content:
+                        const Text("Reset link sent successfully!"),
+                        elevation: 20,
+                        backgroundColor: const Color(0xFF10B600),
+                        behavior: SnackBarBehavior.floating,
+                        action: SnackBarAction(
+                          textColor: Colors.white,
+                          label: '',
+                          onPressed: () {},
+                        ),
+                      );
+                      ScaffoldMessenger.of(context)
+                          .showSnackBar(snackbar);
+                    }
                   },
                   color: const Color(0xFF10B600),
                   elevation: 0,
