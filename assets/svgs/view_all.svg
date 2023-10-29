@@ -1,1 +1,23 @@
-<svg id="SvgjsSvg1001" width="256" height="256" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs"><defs id="SvgjsDefs1002"></defs><g id="SvgjsG1008"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="256" height="256"><path d="M8 15H24a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H8A3 3 0 0 0 5 8v4A3 3 0 0 0 8 15zM7 8A1 1 0 0 1 8 7H24a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1zM8 27H24a3 3 0 0 0 3-3V20a3 3 0 0 0-3-3H8a3 3 0 0 0-3 3v4A3 3 0 0 0 8 27zM7 20a1 1 0 0 1 1-1H24a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1z" data-name="Layer 5" fill="#000000" class="color000 svgShape"></path></svg></g></svg>
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+ "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="256.000000pt" height="256.000000pt" viewBox="0 0 256.000000 256.000000"
+ preserveAspectRatio="xMidYMid meet">
+
+<g transform="translate(0.000000,256.000000) scale(0.100000,-0.100000)"
+fill="#000000" stroke="none">
+<path d="M560 2147 c-49 -16 -133 -102 -148 -153 -16 -56 -16 -412 0 -468 16
+-55 99 -138 154 -154 31 -9 215 -12 716 -12 769 0 736 -3 811 80 24 26 49 66
+55 88 16 53 16 411 0 464 -6 22 -31 62 -55 88 -75 83 -41 80 -817 79 -466 -1
+-692 -5 -716 -12z m1415 -172 c25 -24 25 -26 25 -215 0 -189 0 -191 -25 -215
+l-24 -25 -671 0 -671 0 -24 25 c-25 24 -25 26 -25 215 0 189 0 191 25 215 l24
+25 671 0 671 0 24 -25z"/>
+<path d="M560 1187 c-49 -16 -133 -102 -148 -153 -16 -56 -16 -412 0 -468 16
+-55 99 -138 154 -154 31 -9 215 -12 716 -12 769 0 736 -3 811 80 24 26 49 66
+55 88 16 53 16 411 0 464 -6 22 -31 62 -55 88 -75 83 -41 80 -817 79 -466 -1
+-692 -5 -716 -12z m1415 -172 c25 -24 25 -26 25 -215 0 -189 0 -191 -25 -215
+l-24 -25 -671 0 -671 0 -24 25 c-25 24 -25 26 -25 215 0 189 0 191 25 215 l24
+25 671 0 671 0 24 -25z"/>
+</g>
+</svg>
