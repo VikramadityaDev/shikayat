@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shikayat/categories/canteen.dart';
@@ -8,7 +9,6 @@ import 'package:shikayat/categories/exam.dart';
 import 'package:shikayat/categories/facility.dart';
 import 'package:shikayat/categories/library.dart';
 import 'package:shikayat/categories/lost&found.dart';
-import 'package:shikayat/screens/student/add_shikayat.dart';
 import 'package:shikayat/utils/assets.dart';
 
 class HomeScreen extends StatefulWidget with WidgetsBindingObserver {
@@ -252,30 +252,28 @@ class _HomeScreenState extends State<HomeScreen>
                   const SizedBox(
                     width: 12,
                   ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Shikayat',
-                        style: GoogleFonts.lato(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500,
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Shikayat',
+                          style: GoogleFonts.lato(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 4,
-                      ),
-                      Text(
-                        "Complaint Management System.",
-                        style: GoogleFonts.lato(
-                            fontSize: 13, fontWeight: FontWeight.w400),
-                      ),
-
-                    ],
-                  ),
-                  const SizedBox(
-                    width: 1,
+                        const SizedBox(
+                          height: 4,
+                        ),
+                        Text(
+                          "Student Panel",
+                          style: GoogleFonts.lato(
+                              fontSize: 13, fontWeight: FontWeight.w400),
+                        ),
+                      ],
+                    ),
                   ),
                   IconButton(
                       onPressed: (){
@@ -316,10 +314,7 @@ class _HomeScreenState extends State<HomeScreen>
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 GestureDetector(
-                  onTap: (){
-                    Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const AddShikayat()));
-                  },
+                  onTap: () => Navigator.of(context).pushNamed('/addShikayat'),
                   child: Container(
                     width: 60,
                     height: 60,
@@ -334,11 +329,11 @@ class _HomeScreenState extends State<HomeScreen>
                             offset: const Offset(0, 3),
                           ),
                         ]),
-                    child: const Padding(
-                      padding: EdgeInsets.all(12.0),
-                      child: Image(
-                          color: Colors.green,
-                          image: AssetImage('assets/add_message.png')),
+                    child:  Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: SvgPicture.asset('assets/svgs/add_message.svg',
+                          colorFilter: const ColorFilter.mode(Colors.green, BlendMode.srcIn)
+                      ),
                     ),
                   ),
                 ),
@@ -384,11 +379,11 @@ class _HomeScreenState extends State<HomeScreen>
                             offset: const Offset(0, 3),
                           ),
                         ],),
-                    child: const Padding(
-                      padding: EdgeInsets.all(15.0),
-                      child: Image(
-                          color: Colors.green,
-                          image: AssetImage('assets/view.png'),),
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: SvgPicture.asset('assets/svgs/view.svg',
+                          colorFilter: const ColorFilter.mode(Colors.green, BlendMode.srcIn)
+                      ),
                     ),
                   ),
                   Text(
@@ -434,11 +429,11 @@ class _HomeScreenState extends State<HomeScreen>
                             offset: const Offset(0, 3),
                           ),
                         ]),
-                    child: const Padding(
-                      padding: EdgeInsets.all(15.0),
-                      child: Image(
-                          color: Colors.green,
-                          image: AssetImage('assets/account.png')),
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: SvgPicture.asset('assets/svgs/account.svg',
+                          colorFilter: const ColorFilter.mode(Colors.green, BlendMode.srcIn)
+                      ),
                     ),
                   ),
                   Text(
@@ -490,7 +485,7 @@ class _HomeScreenState extends State<HomeScreen>
           name,
           maxLines: 2,
           textAlign: TextAlign.center,
-          style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
+          style: GoogleFonts.lato(fontSize: 15, fontWeight: FontWeight.w400),
         ),
         const SizedBox(height: 10),
       ],

@@ -107,7 +107,6 @@ class LostAndFoundShikayatState extends State<LostAndFoundShikayat> {
                               borderRadius: BorderRadius.circular(10)),
                           child: Container(
                             width: 300,
-                            height: 230,
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 10, vertical: 10),
                             child: Column(

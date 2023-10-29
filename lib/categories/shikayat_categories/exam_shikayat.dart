@@ -122,7 +122,6 @@ class ExamShikayatState extends State<ExamShikayat> {
                           ),
                           child: Container(
                             width: 300,
-                            height: 230,
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 10, vertical: 10),
                             child: Column(

@@ -37,11 +37,11 @@ class _LoginScreenState extends State<LoginScreen> {
           backgroundColor: Colors.white,
           elevation: 0,
           centerTitle: true,
-          title: Padding(
-            padding: const EdgeInsets.only(right: 25.0),
-            child: Image.asset('assets/shikayat_banner.png',
-              height: 75,
-              width: MediaQuery.of(context).size.width,
+          title: Text('Shikayat',
+            style: GoogleFonts.lato(
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+              fontSize: 28,
             ),
           ),
         ),

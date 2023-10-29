@@ -173,6 +173,10 @@ class _MainPageState extends State<MainPage> {
                   ],
                 ),
               ),
+        // bottomNavigationBar: const Padding(
+        //   padding: EdgeInsets.all(8.0),
+        //   child: Text('Created By: Vikramaditya, Rahul, Suraj', textAlign: TextAlign.center,),
+        // ),
       ),
     );
   }

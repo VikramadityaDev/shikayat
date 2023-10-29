@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shikayat/utils/assets.dart';
 
@@ -24,35 +25,38 @@ class Facility extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              const Text("Facility-related complaints include students' grievances concerning the basic amenities provided on their college campus.",
-                maxLines: 4,
+              Text("Facility-related complaints include students' grievances concerning the basic amenities provided on their college campus.",
+                maxLines: 5,
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: GoogleFonts.lato(
                   fontSize: 20,
                 ),
               ),
               const SizedBox(
                 height: 50,
               ),
-              MaterialButton(
-                onPressed: () {
-                  Navigator.of(context).pushNamed('/facilityRelated');
-                },
-                color: const Color(0xFF000000),
-                elevation: 0,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(22.0),
-                ),
-                padding: const EdgeInsets.all(16),
-                textColor: const Color(0xffffffff),
-                height: 50,
-                minWidth: MediaQuery.of(context).size.width,
-                child: const Text(
-                  "View All Facility Complaints",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
-                    fontStyle: FontStyle.normal,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 1),
+                child: MaterialButton(
+                  onPressed: () {
+                    Navigator.of(context).pushNamed('/facilityRelated');
+                  },
+                  color: const Color(0xFF000000),
+                  elevation: 0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(6.0),
+                  ),
+                  padding: const EdgeInsets.all(16),
+                  textColor: const Color(0xffffffff),
+                  height: 50,
+                  minWidth: MediaQuery.of(context).size.width,
+                  child: Text(
+                    "View All Facility Complaints",
+                    style: GoogleFonts.lato(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                      fontStyle: FontStyle.normal,
+                    ),
                   ),
                 ),
               ),
