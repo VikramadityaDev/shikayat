@@ -44,7 +44,7 @@ class Document extends StatelessWidget {
                   color: const Color(0xFF000000),
                   elevation: 0,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(22.0),
+                    borderRadius: BorderRadius.circular(6.0),
                   ),
                   padding: const EdgeInsets.all(16),
                   textColor: const Color(0xffffffff),
