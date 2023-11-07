@@ -3,12 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
-import 'package:shikayat/categories/canteen.dart';
-import 'package:shikayat/categories/document.dart';
-import 'package:shikayat/categories/exam.dart';
-import 'package:shikayat/categories/facility.dart';
-import 'package:shikayat/categories/library.dart';
-import 'package:shikayat/categories/lost&found.dart';
 import 'package:shikayat/utils/assets.dart';
 
 class HomeScreen extends StatefulWidget with WidgetsBindingObserver {
