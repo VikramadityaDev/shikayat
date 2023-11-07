@@ -59,60 +59,42 @@ class _HomeScreenState extends State<HomeScreen>
         'asset': MyAssets.examRelated,
         'name': 'Exam Related',
         'onPress': () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const Exam()),
-          );
+          Navigator.of(context).pushNamed('/exam');
         },
       },
       {
         'asset': MyAssets.facilityRelated,
         'name': 'Facility Related',
         'onPress': () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const Facility()),
-          );
+          Navigator.of(context).pushNamed('/facility');
         },
       },
       {
         'asset': MyAssets.documentRelated,
         'name': 'Document Related',
         'onPress': () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const Document()),
-          );
+          Navigator.of(context).pushNamed('/document');
         },
       },
       {
         'asset': MyAssets.libraryRelated,
         'name': 'Library Related',
         'onPress': () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const Library()),
-          );
+          Navigator.of(context).pushNamed('/library');
         },
       },
       {
         'asset': MyAssets.canteenRelated,
         'name': 'Canteen Related',
         'onPress': () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const Canteen()),
-          );
+          Navigator.of(context).pushNamed('/canteen');
         },
       },
       {
         'asset': MyAssets.lostAndFound,
         'name': 'Lost & Found Related',
         'onPress': () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const LostAndFound()),
-          );
+          Navigator.of(context).pushNamed('/lost');
         },
       },
     ];
