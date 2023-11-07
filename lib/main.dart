@@ -15,6 +15,12 @@ import 'package:shikayat/auth/admin_login.dart';
 import 'package:shikayat/auth/forgot_page.dart';
 import 'package:shikayat/auth/login_page.dart';
 import 'package:shikayat/auth/register_page.dart';
+import 'package:shikayat/categories/canteen.dart';
+import 'package:shikayat/categories/document.dart';
+import 'package:shikayat/categories/exam.dart';
+import 'package:shikayat/categories/facility.dart';
+import 'package:shikayat/categories/library.dart';
+import 'package:shikayat/categories/lost&found.dart';
 import 'package:shikayat/categories/shikayat_categories/document_shikayat.dart';
 import 'package:shikayat/categories/shikayat_categories/exam_shikayat.dart';
 import 'package:shikayat/categories/shikayat_categories/facility_shikayat.dart';
@@ -58,6 +64,12 @@ class MyApp extends StatelessWidget {
         '/adminLogin': (context) => const AdminLogin(),
         '/adminHome': (context) => const AdminHome(),
         '/homePage': (context) => const HomeScreen(),
+        '/exam': (context) => const Exam(),
+        '/facility': (context) => const Facility(),
+        '/document': (context) => const Document(),
+        '/library': (context) => const Library(),
+        '/canteen': (context) => const Canteen(),
+        '/lost': (context) => const LostAndFound(),
         '/addShikayat': (context) => const AddShikayat(),
         '/viewShikayat': (context) => const ViewUserShikayat(),
         '/myShikayat': (context) => const MyUserShikayat(),
