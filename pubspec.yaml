@@ -2,7 +2,7 @@ name: shikayat
 description: Shikayat is an college Complaint Management Application (CMA) developed in flutter and firebase.
 publish_to: 'none'
 
-version: 1.0.1+1
+version: 1.0.2+1
 
 environment:
   sdk: '>=3.1.2 <4.0.0'
