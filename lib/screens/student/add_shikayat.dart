@@ -26,6 +26,22 @@ class _AddShikayatState extends State<AddShikayat> {
       FirebaseFirestore.instance.collection('Complaint_data1');
   late List<Map<String, dynamic>> dataList = [];
 
+
+  Future<String> getUsernameForCurrentUser() async {
+    String currentUserUID = FirebaseAuth.instance.currentUser!.uid;
+    String username = '';
+
+    QuerySnapshot snapshot = await FirebaseFirestore.instance
+        .collection('userId')
+        .where('uid', isEqualTo: currentUserUID)
+        .get();
+
+    if (snapshot.docs.isNotEmpty) {
+      username = snapshot.docs[0].get('user_name');
+    }
+    return username;
+  }
+
   @override
   void initState() {
     super.initState();
@@ -35,6 +51,10 @@ class _AddShikayatState extends State<AddShikayat> {
     textController4 = TextEditingController();
 
     super.initState();
+    getUsernameForCurrentUser().then((username) {
+      textController3?.text = username;
+    });
+
     getDataFromFirestore().then((value) {
       setState(() {
         dataList = value;
@@ -53,7 +73,7 @@ class _AddShikayatState extends State<AddShikayat> {
       Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
       dataList.add(data);
     });
-
+    
     return dataList;
   }
 
@@ -313,7 +333,7 @@ class _AddShikayatState extends State<AddShikayat> {
                         autofocus: true,
                         obscureText: false,
                         decoration: InputDecoration(
-                          hintText: "Enter Username",
+                          hintText: "Enter Name",
                           hintStyle: GoogleFonts.lato(),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(6),
@@ -373,9 +393,9 @@ class _AddShikayatState extends State<AddShikayat> {
                         options: const [
                           'BCA',
                           'BBA',
+                          'BAJMC',
                           'B.COM',
                           'B.COM(HONS.)',
-                          'BSc.Maths',
                         ],
                         onChanged: (val) =>
                             setState(() => dropDownValue2 = val),
