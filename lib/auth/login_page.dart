@@ -21,6 +21,21 @@ class _LoginScreenState extends State<LoginScreen> {
   bool showSpinner = false;
   CollectionReference userId= FirebaseFirestore.instance.collection('userId');
 
+  Future<String> getCurrentUser() async {
+    String currentUserUID = FirebaseAuth.instance.currentUser!.uid;
+    String username = '';
+
+    QuerySnapshot snapshot = await FirebaseFirestore.instance
+        .collection('userId')
+        .where('uid', isEqualTo: currentUserUID)
+        .get();
+
+    if (snapshot.docs.isNotEmpty) {
+      username = snapshot.docs[0].get('user_name');
+    }
+    return username;
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -159,27 +174,26 @@ class _LoginScreenState extends State<LoginScreen> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(16, 10, 16, 0),
                   child: MaterialButton(
-                    onPressed: () {
-                      if(
-                      _emailTextController.text.isEmpty&&_passwordTextController.text.isEmpty
-                      ){
+                    onPressed: () async {
+                      if (_emailTextController.text.isEmpty && _passwordTextController.text.isEmpty) {
                         setState(() {
-                          showSpinner=false;
+                          showSpinner = false;
+                        });
+                      } else {
+                        setState(() {
+                          showSpinner = true;
                         });
                       }
-                      else{
-                        setState(() {
-                          showSpinner=true;
-                        });
-                      }
-                      FirebaseAuth.instance
-                          .signInWithEmailAndPassword(
+
+                      try {
+                        UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
                           email: _emailTextController.text,
-                          password: _passwordTextController.text)
-                          .then((value) {
+                          password: _passwordTextController.text,
+                        );
+                        String username = await getCurrentUser();
                         Navigator.of(context).pushReplacementNamed('/homePage');
                         final snackbar = SnackBar(
-                          content: const Text("Hi,Welcome to Shikayat!"),
+                          content: Text("Hey $username, Welcome Back!"),
                           elevation: 20,
                           backgroundColor: const Color(0xFF10B600),
                           action: SnackBarAction(
@@ -190,10 +204,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           behavior: SnackBarBehavior.floating,
                         );
                         ScaffoldMessenger.of(context).showSnackBar(snackbar);
+
                         setState(() {
-                          showSpinner=false;
+                          showSpinner = false;
                         });
-                      }).onError((error, stackTrace){
+                      } catch (error) {
                         print("Error ${error.toString()}");
                         final snackbar = SnackBar(
                           content: const Text("User Credentials are Invalid!"),
@@ -202,16 +217,18 @@ class _LoginScreenState extends State<LoginScreen> {
                           action: SnackBarAction(
                             textColor: Colors.white,
                             label: '',
-                            onPressed: () {  },
+                            onPressed: () {},
                           ),
                           behavior: SnackBarBehavior.floating,
                         );
                         ScaffoldMessenger.of(context).showSnackBar(snackbar);
+
                         setState(() {
-                          showSpinner=false;
+                          showSpinner = false;
                         });
-                      });
+                      }
                     },
+
                     color: const Color(0xFF000000),
                     elevation: 0,
                     shape: RoundedRectangleBorder(
