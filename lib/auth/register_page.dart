@@ -25,9 +25,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
   List listItem = [
     'BCA',
     'BBA',
+    'BAJMC',
     'B.COM',
     'B.COM(HONS.)',
-    'BSc.Maths',
   ];
 
   @override
@@ -103,7 +103,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   child: TextField(
                     controller: _userNameTextController,
                     decoration: InputDecoration(
-                      hintText: 'Enter Your Username',
+                      hintText: 'Enter Your Name',
                       hintStyle: const TextStyle(color: Colors.grey),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(6),
