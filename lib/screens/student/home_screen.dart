@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shikayat/utils/assets.dart';
+import 'package:starlight_netchecker_widget/starlight_netchecker_widget.dart';
 
 class HomeScreen extends StatefulWidget with WidgetsBindingObserver {
   const HomeScreen({super.key});
@@ -105,86 +106,95 @@ class _HomeScreenState extends State<HomeScreen>
   Widget build(BuildContext context) {
     columnData = _buildColumnData(context);
     return SafeArea(
-      child: Scaffold(
-        key: scaffoldKey,
-        body: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
-          child: ListView(
-            physics: const BouncingScrollPhysics(),
-            children: [
-              Column(
-                children: [
-                  buildHeader(),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  buildAddViewComplaintRow(),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Divider(
-                    thickness: 10,
-                    color: Colors.grey.withOpacity(0.1),
-                  ),
-                  SlideTransition(
-                    position: Tween<Offset>(
-                      begin: const Offset(0, 0.25),
-                      end: const Offset(0, 0),
-                    ).animate(
-                      CurvedAnimation(
-                        parent: slideController,
-                        curve: Curves.easeOut,
-                      ),
+      child: StarlightNetChecker(
+        position: StarlightNetCheckerPosition.top,
+        indicatorHeight: 40,
+        indicatorColor: Colors.green,
+        errorIndicatorColor: Colors.red,
+        label: "Connected",
+        errorLabel: "No Internet Connection",
+        duration: const Duration(seconds: 1),
+        child: Scaffold(
+          key: scaffoldKey,
+          body: GestureDetector(
+            onTap: () => FocusScope.of(context).unfocus(),
+            child: ListView(
+              physics: const BouncingScrollPhysics(),
+              children: [
+                Column(
+                  children: [
+                    buildHeader(),
+                    const SizedBox(
+                      height: 20,
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 24, vertical: 18),
-                      child: Text(
-                        "Complaint Categories",
-                        style: GoogleFonts.lato(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 19,
-                          color: Colors.grey[800],
+                    buildAddViewComplaintRow(),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Divider(
+                      thickness: 10,
+                      color: Colors.grey.withOpacity(0.1),
+                    ),
+                    SlideTransition(
+                      position: Tween<Offset>(
+                        begin: const Offset(0, 0.25),
+                        end: const Offset(0, 0),
+                      ).animate(
+                        CurvedAnimation(
+                          parent: slideController,
+                          curve: Curves.easeOut,
+                        ),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 24, vertical: 18),
+                        child: Text(
+                          "Complaint Categories",
+                          style: GoogleFonts.lato(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 19,
+                            color: Colors.grey[800],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  GridView.builder(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 20.0,
-                      mainAxisSpacing: 8.0,
-                      childAspectRatio: 0.67,
-                    ),
-                    itemCount: columnData.length,
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      return SlideTransition(
-                          position: Tween<Offset>(
-                            begin: const Offset(0, 0.25),
-                            end: const Offset(0, 0),
-                          ).animate(
-                            CurvedAnimation(
-                              parent: slideController,
-                              curve: Interval(index / columnData.length, 1.0,
-                                  curve: Curves.easeOut),
+                    GridView.builder(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 20.0,
+                        mainAxisSpacing: 8.0,
+                        childAspectRatio: 0.67,
+                      ),
+                      itemCount: columnData.length,
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        return SlideTransition(
+                            position: Tween<Offset>(
+                              begin: const Offset(0, 0.25),
+                              end: const Offset(0, 0),
+                            ).animate(
+                              CurvedAnimation(
+                                parent: slideController,
+                                curve: Interval(index / columnData.length, 1.0,
+                                    curve: Curves.easeOut),
+                              ),
                             ),
-                          ),
-                          child: buildColumn(
-                            context,
-                            columnData[index]['asset'],
-                            columnData[index]['name'],
-                            columnData[index]['onPress'],
-                          ),
-                      );
-                    },
-                  ),
-                ],
-              ),
-            ],
+                            child: buildColumn(
+                              context,
+                              columnData[index]['asset'],
+                              columnData[index]['name'],
+                              columnData[index]['onPress'],
+                            ),
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -456,7 +466,7 @@ class _HomeScreenState extends State<HomeScreen>
             ),
           ),
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 5),
         Text(
           name,
           maxLines: 2,
