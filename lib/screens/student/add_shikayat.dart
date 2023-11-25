@@ -487,7 +487,6 @@ class _AddShikayatState extends State<AddShikayat> {
                             );
                             ScaffoldMessenger.of(context).showSnackBar(snackbar);
                           }
-
                           if (dropDownValue2 == null) {
                             final snackbar = SnackBar(
                               content: const Text(
