@@ -1,3 +1,4 @@
+// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -9,7 +10,6 @@ import 'package:shikayat/categories/exam.dart';
 import 'package:shikayat/categories/facility.dart';
 import 'package:shikayat/categories/library.dart';
 import 'package:shikayat/categories/lost&found.dart';
-import 'package:shikayat/screens/student/add_shikayat.dart';
 import 'package:shikayat/utils/assets.dart';
 import 'package:starlight_netchecker_widget/starlight_netchecker_widget.dart';
 
@@ -46,6 +46,7 @@ class _AdminHomeState extends State<AdminHome>
       ),
     );
     slideController.forward();
+    // getCountFromFirestore();
   }
 
   @override
@@ -127,6 +128,32 @@ class _AdminHomeState extends State<AdminHome>
     }
   }
 
+  // int pendingComplaintCount = 0;
+  //
+  // Future<List<Map<String, dynamic>>> getCountFromFirestore() async {
+  //   try {
+  //     List<Map<String, dynamic>> dataList = [];
+  //     final QuerySnapshot snapshot =
+  //     await FirebaseFirestore.instance.collection('Complaint_data1').get();
+  //
+  //     snapshot.docs.forEach((doc) {
+  //       Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+  //       dataList.add(data);
+  //
+  //       if (data['status'] == 'Pending') {
+  //         pendingComplaintCount++;
+  //       }
+  //     });
+  //
+  //     setState(() {});
+  //
+  //     return dataList;
+  //   } catch (e) {
+  //     print('Error fetching data: $e');
+  //     return [];
+  //   }
+  // }
+
   @override
   Widget build(BuildContext context) {
     columnData = _buildColumnData(context);
@@ -188,7 +215,7 @@ class _AdminHomeState extends State<AdminHome>
                       GridView.builder(
                         padding: const EdgeInsets.symmetric(horizontal: 10.0),
                         gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
                           crossAxisSpacing: 20.0,
                           mainAxisSpacing: 8.0,
@@ -241,7 +268,7 @@ class _AdminHomeState extends State<AdminHome>
           right: 20,
           left: 20,
           child: Container(
-            width: MediaQuery.of(context).size.width * 0.10,
+            width: MediaQuery.of(context).size.width * 0.8,
             height: 60,
             decoration: BoxDecoration(
                 color: Colors.white,
@@ -290,14 +317,14 @@ class _AdminHomeState extends State<AdminHome>
                     ),
                   ),
                   IconButton(
-                      onPressed: (){
-                        FirebaseAuth.instance.signOut().then((value) {
-                          Navigator.of(context).pushReplacementNamed('/');
-                        },
+                      onPressed: () {
+                        FirebaseAuth.instance.signOut().then(
+                          (value) {
+                            Navigator.of(context).pushReplacementNamed('/');
+                          },
                         );
                       },
-                      icon: const Icon(Icons.logout)
-                  ),
+                      icon: const Icon(Icons.logout)),
                 ],
               ),
             ),
@@ -323,40 +350,58 @@ class _AdminHomeState extends State<AdminHome>
           ),
           child: SizedBox(
             width: 60,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
+            child: Stack(
+              alignment: Alignment.topRight,
               children: [
-                GestureDetector(
-                  onTap: () => Navigator.of(context).pushNamed('/adminViewShikayat'),
-                  child: Container(
-                    width: 60,
-                    height: 60,
-                    margin: const EdgeInsets.only(bottom: 10),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(8),
-                        boxShadow: [
-                          BoxShadow(
-                            color: const Color(0xFF50CD6D).withOpacity(0.1),
-                            blurRadius: 10,
-                            offset: const Offset(0, 3),
-                          ),
-                        ]),
-                    child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: SvgPicture.asset('assets/svgs/view_all.svg',
-                        colorFilter: const ColorFilter.mode(Colors.green, BlendMode.srcIn)
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                      onTap: () =>
+                          Navigator.of(context).pushNamed('/adminViewShikayat'),
+                      child: Container(
+                        width: 60,
+                        height: 60,
+                        margin: const EdgeInsets.only(bottom: 10),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(8),
+                            boxShadow: [
+                              BoxShadow(
+                                color: const Color(0xFF50CD6D).withOpacity(0.1),
+                                blurRadius: 10,
+                                offset: const Offset(0, 3),
+                              ),
+                            ]),
+                        child: Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: SvgPicture.asset('assets/svgs/view_all.svg',
+                              colorFilter: const ColorFilter.mode(
+                                  Colors.green, BlendMode.srcIn)),
+                        ),
                       ),
                     ),
-                  ),
+                    Text(
+                      'View all Complaint',
+                      maxLines: 2,
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.lato(
+                          fontSize: 13, fontWeight: FontWeight.w500),
+                    )
+                  ],
                 ),
-                Text(
-                  'View all Complaint',
-                  maxLines: 2,
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.lato(fontSize: 13, fontWeight: FontWeight.w500),
-                )
+                // Container(
+                //   padding: const EdgeInsets.all(4),
+                //   decoration: const BoxDecoration(
+                //     shape: BoxShape.circle,
+                //     color: Colors.red,
+                //   ),
+                //   child: Text(
+                //     pendingComplaintCount.toString(),
+                //     style: const TextStyle(color: Colors.white),
+                //   ),
+                // ),
               ],
             ),
           ),
@@ -392,19 +437,21 @@ class _AdminHomeState extends State<AdminHome>
                           blurRadius: 10,
                           offset: const Offset(0, 3),
                         ),
-                      ],),
+                      ],
+                    ),
                     child: Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: SvgPicture.asset('assets/svgs/pending.svg',
-                          colorFilter: const ColorFilter.mode(Colors.green, BlendMode.srcIn)
-                      ),
+                          colorFilter: const ColorFilter.mode(
+                              Colors.green, BlendMode.srcIn)),
                     ),
                   ),
                   Text(
                     'Pending Complaint',
                     maxLines: 2,
                     textAlign: TextAlign.center,
-                    style: GoogleFonts.lato(fontSize: 13, fontWeight: FontWeight.w500),
+                    style: GoogleFonts.lato(
+                        fontSize: 13, fontWeight: FontWeight.w500),
                   )
                 ],
               ),
@@ -446,15 +493,16 @@ class _AdminHomeState extends State<AdminHome>
                     child: Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: SvgPicture.asset('assets/svgs/approved.svg',
-                          colorFilter: const ColorFilter.mode(Colors.green, BlendMode.srcIn)
-                      ),
+                          colorFilter: const ColorFilter.mode(
+                              Colors.green, BlendMode.srcIn)),
                     ),
                   ),
                   Text(
                     'Approved Complaint',
                     maxLines: 2,
                     textAlign: TextAlign.center,
-                    style: GoogleFonts.lato(fontSize: 13, fontWeight: FontWeight.w500),
+                    style: GoogleFonts.lato(
+                        fontSize: 13, fontWeight: FontWeight.w500),
                   )
                 ],
               ),
@@ -496,15 +544,16 @@ class _AdminHomeState extends State<AdminHome>
                     child: Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: SvgPicture.asset('assets/svgs/resolved.svg',
-                          colorFilter: const ColorFilter.mode(Colors.green, BlendMode.srcIn)
-                      ),
+                          colorFilter: const ColorFilter.mode(
+                              Colors.green, BlendMode.srcIn)),
                     ),
                   ),
                   Text(
                     'Resolved Complaint',
                     maxLines: 2,
                     textAlign: TextAlign.center,
-                    style: GoogleFonts.lato(fontSize: 13, fontWeight: FontWeight.w500),
+                    style: GoogleFonts.lato(
+                        fontSize: 13, fontWeight: FontWeight.w500),
                   )
                 ],
               ),
@@ -529,7 +578,7 @@ class _AdminHomeState extends State<AdminHome>
               color: Colors.white,
               borderRadius: BorderRadius.circular(12),
               border:
-              Border.all(color: const Color(0xFF50CD6D).withOpacity(0.3)),
+                  Border.all(color: const Color(0xFF50CD6D).withOpacity(0.3)),
               boxShadow: [
                 BoxShadow(
                   color: const Color(0xFF50CD6D).withOpacity(0.1),
@@ -544,7 +593,7 @@ class _AdminHomeState extends State<AdminHome>
             ),
           ),
         ),
-        const SizedBox(height: 10),
+        const SizedBox(height: 5),
         Text(
           name,
           maxLines: 2,

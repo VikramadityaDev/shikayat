@@ -26,6 +26,7 @@ dependencies:
   starlight_netchecker_widget:
     git:
       url: https://github.com/YeMyoAung/starlight_netchecker_widget.git
+  peanut: ^5.0.0
 
 dev_dependencies:
   flutter_test:

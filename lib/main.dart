@@ -1,11 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:shikayat/admin_categories/admin_home.dart';
-import 'package:shikayat/admin_categories/admin_shikayat_categories/admin_document_shikayat.dart';
-import 'package:shikayat/admin_categories/admin_shikayat_categories/admin_exam_shikayat.dart';
-import 'package:shikayat/admin_categories/admin_shikayat_categories/admin_facility_shikayat.dart';
-import 'package:shikayat/admin_categories/admin_shikayat_categories/admin_library_shikayat.dart';
-import 'package:shikayat/admin_categories/admin_shikayat_categories/admin_lost&found_shikayat.dart';
 import 'package:shikayat/admin_categories/admin_view_shikayat.dart';
 import 'package:shikayat/admin_categories/approved_shikayat.dart';
 import 'package:shikayat/admin_categories/pending_shikayat.dart';
@@ -21,16 +16,20 @@ import 'package:shikayat/categories/exam.dart';
 import 'package:shikayat/categories/facility.dart';
 import 'package:shikayat/categories/library.dart';
 import 'package:shikayat/categories/lost&found.dart';
-import 'package:shikayat/categories/shikayat_categories/document_shikayat.dart';
-import 'package:shikayat/categories/shikayat_categories/exam_shikayat.dart';
-import 'package:shikayat/categories/shikayat_categories/facility_shikayat.dart';
-import 'package:shikayat/categories/shikayat_categories/library_shikayat.dart';
-import 'package:shikayat/categories/shikayat_categories/lost&found_shikayat.dart';
 import 'package:shikayat/screens/student/add_shikayat.dart';
 import 'package:shikayat/screens/student/home_screen.dart';
 import 'package:shikayat/screens/student/my_user_shikayat_screen.dart';
 import 'package:shikayat/screens/student/view_user_shikayat.dart';
-
+import 'admin_categories/admin_shikayat_categories/admin_document_shikayat.dart';
+import 'admin_categories/admin_shikayat_categories/admin_exam_shikayat.dart';
+import 'admin_categories/admin_shikayat_categories/admin_facility_shikayat.dart';
+import 'admin_categories/admin_shikayat_categories/admin_library_shikayat.dart';
+import 'admin_categories/admin_shikayat_categories/admin_lost&found_shikayat.dart';
+import 'categories/shikayat_categories/document_shikayat.dart';
+import 'categories/shikayat_categories/exam_shikayat.dart';
+import 'categories/shikayat_categories/facility_shikayat.dart';
+import 'categories/shikayat_categories/library_shikayat.dart';
+import 'categories/shikayat_categories/lost&found_shikayat.dart';
 import 'firebase_options.dart';
 
 void main() async {

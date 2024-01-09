@@ -40,7 +40,7 @@ class ViewUserShikayatState extends State<ViewUserShikayat> {
   @override
   Widget build(BuildContext context) {
     String formatTimestamp(Timestamp timestamp) {
-      var format = DateFormat('yyyy-MM-dd'); // <- use skeleton here
+      var format = DateFormat('yyyy-MM-dd');
       return format.format(timestamp.toDate()).toString();
     }
     return SafeArea(
